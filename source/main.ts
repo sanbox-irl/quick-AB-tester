@@ -3,16 +3,26 @@ import * as path from 'path';
 import AdmZip from 'adm-zip';
 
 class Main {
-    testA: string = '';
-    testB: string = '';
-    directory: string = '';
+    testA: string =
+        'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\Normal Builds\\Build 3';
+    testB: string =
+        'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\Normal Builds\\Build 5';
+    directory: string =
+        'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\AB Tests';
 
     public Main() {
-        const aPath: string = path.join(this.directory, this.testA);
-        const bPath: string = path.join(this.directory, this.testB);
+        const aPath: string = this.testA;
+        const bPath: string = this.testB;
 
         if (!(fs.existsSync(this.directory) && fs.existsSync(aPath) && fs.existsSync(bPath))) {
-            console.log('Directory or files did not exist. Exiting...');
+            if (fs.existsSync(this.directory) == false)
+                console.log("Directory didn't exist!");
+            
+            if (fs.existsSync(aPath) == false)
+                console.log("APath didn't exist!");
+            
+            if (fs.existsSync(bPath) == false)
+                console.log("BPath didn't exist!");
             return;
         }
 

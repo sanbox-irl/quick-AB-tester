@@ -15,15 +15,20 @@ const path = __importStar(require("path"));
 const adm_zip_1 = __importDefault(require("adm-zip"));
 class Main {
     constructor() {
-        this.testA = '';
-        this.testB = '';
-        this.directory = '';
+        this.testA = 'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\Normal Builds\\Build 3';
+        this.testB = 'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\Normal Builds\\Build 5';
+        this.directory = 'C:\\Users\\jjspi\\Documents\\Projects\\Unity Projects\\GM48 Grace and Jack Make Games\\Build\\AB Tests';
     }
     Main() {
-        const aPath = path.join(this.directory, this.testA);
-        const bPath = path.join(this.directory, this.testB);
+        const aPath = this.testA;
+        const bPath = this.testB;
         if (!(fs.existsSync(this.directory) && fs.existsSync(aPath) && fs.existsSync(bPath))) {
-            console.log('Directory or files did not exist. Exiting...');
+            if (fs.existsSync(this.directory) == false)
+                console.log("Directory didn't exist!");
+            if (fs.existsSync(aPath) == false)
+                console.log("APath didn't exist!");
+            if (fs.existsSync(bPath) == false)
+                console.log("BPath didn't exist!");
             return;
         }
         let baseFolder = path.join(this.directory, 'Test ' + new Date().toDateString());
